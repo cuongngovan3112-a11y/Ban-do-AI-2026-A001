@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bản Đồ Thành Thạo AI 2026 | NGÔ CƯƠNG VORIAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --bg:       #07070F;
+  --bg2:      #0C0C1A;
+  --bg3:      #101022;
+  --surf:     #141428;
+  --surf2:    #1C1C38;
+  --surf3:    #232345;
+  --bord:     rgba(139,92,246,.22);
+  --bord2:    rgba(255,255,255,.10);
+  --gold:     #F5C518;
+  --gold2:    #FFB800;
+  --amber:    #FF9500;
+  --violet:   #8B5CF6;
+  --violet2:  #A78BFA;
+  --blue:     #3B82F6;
+  --cyan:     #06B6D4;
+  --green:    #10B981;
+  --orange:   #F97316;
+  --red:      #EF4444;
+  --text:     #EEEEFF;
+  --muted:    #6868A0;
+  --muted2:   #404068;
+  --font-d:   'Playfair Display', serif;
+  --font-b:   'Be Vietnam Pro', sans-serif;
+
+  /* Stage colors */
+  --s1: #8B5CF6;
+  --s2: #F59E0B;
+  --s3: #06B6D4;
+  --s4: #F43F5E;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 3px; }
+
+/* ─── NOISE TEXTURE ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity: .5;
+}
+
+/* ─── TOP NAV ─── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(26,43,74,.95);
+  border-bottom: 1px solid var(--bord);
+  backdrop-filter: blur(20px);
+  padding: .9rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.nav::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--violet), var(--gold), transparent);
+  opacity: .5;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: .7rem;
+}
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--violet);
+  box-shadow: 0 0 10px var(--violet);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.nav-title {
+  font-family: var(--font-d);
+  font-size: .95rem; font-weight: 800;
+  color: var(--gold); letter-spacing: .02em;
+}
+.nav-sub {
+  font-size: .7rem; color: var(--muted);
+  letter-spacing: .06em;
+}
+.nav-progress {
+  display: flex; align-items: center; gap: .8rem;
+  font-size: .76rem; color: var(--muted);
+}
+.nav-xp {
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: #000; font-weight: 800; font-size: .76rem;
+  padding: .25rem .85rem; border-radius: 100px;
+  box-shadow: 0 0 14px rgba(245,197,24,.3);
+  animation: xpglow 3s ease infinite;
+}
+@keyframes xpglow {
+  0%,100%{box-shadow:0 0 14px rgba(245,197,24,.25)}
+  50%{box-shadow:0 0 24px rgba(245,197,24,.5)}
+}
+.prog-wrap { display: flex; align-items: center; gap: .5rem; }
+.prog-bar {
+  width: 100px; height: 6px;
+  background: rgba(255,255,255,.07);
+  border-radius: 3px; overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  border-radius: 3px;
+  transition: width .5s ease;
+}
+.prog-txt { font-size: .72rem; color: var(--text); font-weight: 700; }
+
+/* ─── HERO BANNER ─── */
+.hero {
+  position: relative; overflow: hidden;
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(139,92,246,.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(245,197,24,.08) 0%, transparent 55%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(139,92,246,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 75%);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(139,92,246,.12);
+  border: 1px solid rgba(139,92,246,.3);
+  padding: .35rem 1rem; border-radius: 100px;
+  font-size: .75rem; font-weight: 700; color: var(--violet2);
+  letter-spacing: .06em; margin-bottom: 1.5rem;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--violet);
+  animation: pulse 2s infinite;
+}
+.hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  font-weight: 800; line-height: 1.15;
+  margin-bottom: .8rem;
+}
+.hero h1 .g { color: var(--gold); }
+.hero h1 .v { color: var(--violet2); }
+.hero-tagline {
+  font-size: clamp(.85rem, 1.8vw, 1rem);
+  color: var(--muted); max-width: 600px; margin: 0 auto 2rem;
+  font-style: italic; line-height: 1.6;
+}
+.hero-tagline strong { color: var(--violet2); font-style: normal; }
+
+.stage-pills {
+  display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap;
+}
+.stage-pill {
+  padding: .35rem 1rem;
+  border-radius: 100px;
+  font-size: .75rem; font-weight: 700;
+  cursor: pointer; transition: all .25s;
+  border: 1px solid;
+}
+.stage-pill:hover, .stage-pill.active { transform: translateY(-2px); }
+
+/* ─── MAIN CONTENT ─── */
+.main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; position: relative; z-index: 1; }
+
+/* ─── STAGE HEADER ─── */
+.stage-section { margin-bottom: 3rem; }
+.stage-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 1.8rem; padding: 1.5rem 2rem;
+  border-radius: 18px; position: relative; overflow: hidden;
+}
+.stage-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, transparent 60%);
+}
+.stage-num {
+  font-family: var(--font-d);
+  font-size: 3rem; font-weight: 800;
+  opacity: .18; line-height: 1;
+  flex-shrink: 0;
+}
+.stage-icon-big { font-size: 2.2rem; flex-shrink: 0; }
+.stage-info { flex: 1; }
+.stage-label {
+  font-size: .65rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; opacity: .7; margin-bottom: .3rem;
+}
+.stage-name {
+  font-family: var(--font-d);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 800; line-height: 1.2;
+}
+.stage-desc {
+  font-size: .85rem; color: rgba(255,255,255,.6);
+  margin-top: .4rem; line-height: 1.5;
+  font-style: italic;
+}
+.stage-count {
+  font-family: var(--font-d);
+  font-size: 1.8rem; font-weight: 800;
+  opacity: .6; flex-shrink: 0;
+}
+
+/* ─── SKILL GRID ─── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ─── SKILL CARD ─── */
+.skill-card {
+  background: var(--surf);
+  border: 1px solid var(--bord2);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all .3s;
+  cursor: pointer;
+  position: relative;
+}
+.skill-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  opacity: 0; transition: opacity .3s;
+}
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(139,92,246,.3);
+  box-shadow: 0 16px 40px rgba(0,0,0,.4);
+}
+.skill-card:hover::before { opacity: 1; }
+.skill-card.done { border-color: rgba(16,185,129,.25); }
+.skill-card.done::before { opacity: 1; background: linear-gradient(90deg, transparent, var(--green), transparent)!important; }
+
+/* Card Header */
+.card-head {
+  padding: 1.1rem 1.3rem .9rem;
+  display: flex; align-items: flex-start; gap: .8rem;
+}
+.skill-num-badge {
+  width: 32px; height: 32px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .72rem; font-weight: 800; flex-shrink: 0;
+  margin-top: .1rem;
+}
+.card-title-wrap { flex: 1; }
+.skill-emoji { font-size: 1.2rem; margin-bottom: .25rem; }
+.skill-title {
+  font-size: .95rem; font-weight: 800; line-height: 1.3;
+  color: var(--text);
+}
+.skill-done-check {
+  margin-left: auto; flex-shrink: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3);
+  display: none; align-items: center; justify-content: center;
+  color: var(--green); font-size: .7rem;
+}
+.skill-card.done .skill-done-check { display: flex; }
+
+/* Card Tabs */
+.card-tabs {
+  display: flex;
+  border-top: 1px solid var(--bord2);
+  border-bottom: 1px solid var(--bord2);
+}
+.tab-btn {
+  flex: 1; padding: .5rem .4rem;
+  font-size: .64rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); transition: all .2s;
+  font-family: var(--font-b); border-right: 1px solid var(--bord2);
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn.active { color: var(--text); background: rgba(255,255,255,.04); }
+.tab-btn:hover { color: var(--text); }
+
+/* Card Body */
+.card-body {
+  padding: 1rem 1.3rem 1.2rem;
+  min-height: 100px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Bản chất */
+.ban-chat {
+  font-size: .87rem; line-height: 1.7;
+  color: #C8C8EE;
+}
+.ban-chat strong { color: var(--gold); }
+
+/* Ví dụ */
+.vi-du-box {
+  background: var(--bg3);
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  padding: .9rem 1rem;
+  font-size: .83rem; line-height: 1.7;
+  color: #B8B8DD;
+  position: relative;
+}
+.vi-du-box .quote-mark {
+  position: absolute; top: .5rem; right: .8rem;
+  font-size: 2rem; color: var(--violet); opacity: .15;
+  font-family: serif; line-height: 1;
+}
+.vi-du-box p { margin-bottom: .5rem; }
+.vi-du-box p:last-child { margin-bottom: 0; }
+.vi-du-box ul { padding-left: 1.2rem; margin-top: .3rem; }
+.vi-du-box ul li { margin-bottom: .2rem; }
+
+/* Hành động */
+.hanh-dong {
+  background: linear-gradient(135deg, rgba(245,197,24,.07), rgba(245,197,24,.03));
+  border: 1px solid rgba(245,197,24,.2);
+  border-radius: 12px;
+  padding: .9rem 1rem;
+  font-size: .85rem; line-height: 1.65;
+  color: var(--text);
+  display: flex; align-items: flex-start; gap: .6rem;
+}
+.hanh-dong-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+
+/* Card Footer */
+.card-foot {
+  padding: .75rem 1.3rem;
+  border-top: 1px solid var(--bord2);
+  display: flex; align-items: center; gap: .6rem;
+}
+.copy-cmd-btn {
+  display: flex; align-items: center; gap: .35rem;
+  background: rgba(139,92,246,.1);
+  border: 1px solid rgba(139,92,246,.25);
+  color: var(--violet2); font-size: .71rem; font-weight: 700;
+  padding: .3rem .85rem; border-radius: 100px;
+  cursor: pointer; transition: all .2s;
+  font-family: var(--font-b);
+}
+.copy-cmd-btn:hover { background: rgba(139,92,246,.2); }
+.copy-cmd-btn.ok { background: rgba(16,185,129,.1); color: var(--green); border-color: rgba(16,185,129,.3); }
+.done-btn {
+  margin-left: auto;
+  display: flex; align-items: center; gap: .35rem;
+  background: rgba(16,185,129,.08);
+  border: 1px solid rgba(16,185,129,.2);
+  color: var(--green); font-size: .71rem; font-weight: 700;
+  padding: .3rem .85rem; border-radius: 100px;
+  cursor: pointer; transition: all .2s;
+  font-family: var(--font-b);
+}
+.done-btn:hover { background: rgba(16,185,129,.18); }
+.skill-card.done .done-btn {
+  background: rgba(16,185,129,.15);
+  border-color: rgba(16,185,129,.35);
+}
+
+/* ─── PROGRESS OVERVIEW ─── */
+.overview {
+  background: var(--surf);
+  border: 1px solid var(--bord);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.ov-item { text-align: center; }
+.ov-num {
+  font-family: var(--font-d);
+  font-size: 2.2rem; font-weight: 800;
+}
+.ov-label { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+.ov-bar {
+  height: 4px; border-radius: 2px;
+  background: rgba(255,255,255,.07);
+  margin: .5rem auto 0; max-width: 120px;
+  overflow: hidden;
+}
+.ov-bar-fill { height: 100%; border-radius: 2px; transition: width .5s; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px; margin: 2.5rem 0;
+  background: linear-gradient(90deg, transparent, var(--bord), transparent);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--bord);
+  padding: 2rem; text-align: center;
+}
+.footer-logo {
+  font-family: var(--font-d); font-size: 1rem; font-weight: 800;
+  color: var(--gold); margin-bottom: .5rem;
+}
+.footer-copy { font-size: .78rem; color: var(--muted); }
+
+/* ─── REGISTRATION FORM ─── */
+.reg-section {
+  background: linear-gradient(135deg, rgba(35,57,93,0.9), rgba(26,43,74,0.95));
+  border-top: 1px solid var(--bord);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.reg-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(139,92,246,.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.reg-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.reg-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(245,197,24,.1);
+  border: 1px solid rgba(245,197,24,.3);
+  padding: .3rem .9rem; border-radius: 100px;
+  font-size: .72rem; font-weight: 700;
+  color: var(--gold); letter-spacing: .08em;
+  margin-bottom: 1.2rem;
+}
+.reg-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800; line-height: 1.2;
+  margin-bottom: .7rem;
+  color: var(--text);
+}
+.reg-title .g { color: var(--gold); }
+.reg-subtitle {
+  font-size: .9rem; color: rgba(255,255,255,.55);
+  margin-bottom: 2rem; line-height: 1.6;
+}
+.reg-form {
+  display: flex; flex-direction: column; gap: .85rem;
+  margin-bottom: 1.2rem;
+}
+.reg-input {
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 12px;
+  padding: .85rem 1.1rem;
+  font-size: .9rem; font-family: var(--font-b);
+  color: var(--text);
+  outline: none;
+  transition: border-color .25s, background .25s;
+}
+.reg-input::placeholder { color: rgba(255,255,255,.3); }
+.reg-input:focus {
+  border-color: rgba(139,92,246,.55);
+  background: rgba(255,255,255,.09);
+}
+.reg-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  border: none; border-radius: 12px;
+  padding: 1rem;
+  font-family: var(--font-b);
+  font-size: 1rem; font-weight: 800;
+  color: #fff; cursor: pointer;
+  transition: all .25s;
+  box-shadow: 0 8px 24px rgba(139,92,246,.35);
+  letter-spacing: .03em;
+}
+.reg-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(139,92,246,.5); }
+.reg-btn:active { transform: translateY(0); }
+.reg-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.reg-note { font-size: .72rem; color: rgba(255,255,255,.3); }
+.reg-toast {
+  display: none;
+  margin-top: 1rem;
+  background: rgba(16,185,129,.12);
+  border: 1px solid rgba(16,185,129,.35);
+  border-radius: 12px;
+  padding: .9rem 1.2rem;
+  color: var(--green);
+  font-size: .9rem; font-weight: 600;
+}
+.reg-toast.show { display: block; }
+
+/* ─── MÔ TẢ ─── */
+.mo-ta-box {
+  background: linear-gradient(135deg, rgba(59,130,246,.07), rgba(59,130,246,.03));
+  border: 1px solid rgba(59,130,246,.2);
+  border-radius: 12px;
+  padding: .9rem 1rem;
+  font-size: .85rem; line-height: 1.65;
+  color: var(--text);
+  display: flex; align-items: flex-start; gap: .6rem;
+}
+.mo-ta-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+
+/* ─── CHATGPT BUTTON ─── */
+.gpt-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: linear-gradient(135deg, #10a37f, #0d8f6e);
+  border: none; border-radius: 100px;
+  padding: .3rem .85rem;
+  font-family: var(--font-b);
+  font-size: .71rem; font-weight: 700;
+  color: #fff; cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(16,163,127,.3);
+}
+.gpt-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(16,163,127,.45); }
+.gpt-btn svg { width: 13px; height: 13px; fill: #fff; flex-shrink: 0; }
+
+/* ─── SPLASH SCREEN ─── */
+#splashScreen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: linear-gradient(160deg, #1a2b4a 0%, #23395d 45%, #1d3052 100%);
+  display: flex; align-items: center; justify-content: center;
+  overflow-y: auto;
+}
+#splashScreen.hide {
+  animation: splashOut .5s ease forwards;
+}
+@keyframes splashOut {
+  to { opacity: 0; transform: scale(1.03); pointer-events: none; }
+}
+.splash-inner {
+  width: 100%; max-width: 480px;
+  padding: 2.5rem 2rem;
+  margin: auto;
+  text-align: center;
+  animation: fadeUp .5s ease both;
+}
+.splash-logo {
+  font-family: var(--font-d);
+  font-size: .85rem; font-weight: 800;
+  color: var(--gold); letter-spacing: .05em;
+  margin-bottom: .4rem;
+}
+.splash-map-icon {
+  font-size: 3rem; margin-bottom: 1rem;
+  filter: drop-shadow(0 0 20px rgba(245,197,24,.4));
+}
+.splash-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 800; line-height: 1.2;
+  margin-bottom: .5rem;
+}
+.splash-title .g { color: var(--gold); }
+.splash-title .v { color: var(--violet2); }
+.splash-sub {
+  font-size: .88rem; color: rgba(255,255,255,.5);
+  line-height: 1.6; margin-bottom: 1.8rem;
+  font-style: italic;
+}
+.splash-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+  margin-bottom: 1.8rem;
+}
+.splash-form {
+  display: flex; flex-direction: column; gap: .8rem;
+  margin-bottom: 1rem;
+}
+.splash-input {
+  width: 100%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  padding: .9rem 1.2rem;
+  font-size: .92rem; font-family: var(--font-b);
+  color: var(--text); outline: none;
+  transition: border-color .25s, background .25s;
+}
+.splash-input::placeholder { color: rgba(255,255,255,.28); }
+.splash-input:focus {
+  border-color: rgba(139,92,246,.6);
+  background: rgba(255,255,255,.1);
+}
+.splash-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--violet) 0%, var(--blue) 100%);
+  border: none; border-radius: 12px;
+  padding: 1.05rem;
+  font-family: var(--font-b); font-size: 1rem; font-weight: 800;
+  color: #fff; cursor: pointer;
+  transition: all .25s;
+  box-shadow: 0 8px 28px rgba(139,92,246,.4);
+  letter-spacing: .03em;
+}
+.splash-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(139,92,246,.55); }
+.splash-btn:active { transform: scale(.99); }
+.splash-btn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+.splash-toast {
+  display: none; margin-top: .8rem;
+  background: rgba(16,185,129,.13);
+  border: 1px solid rgba(16,185,129,.4);
+  border-radius: 10px; padding: .8rem 1rem;
+  color: var(--green); font-size: .88rem; font-weight: 600;
+}
+.splash-toast.show { display: block; animation: fadeUp .3s ease; }
+.splash-note {
+  font-size: .7rem; color: rgba(255,255,255,.25);
+  margin-top: .8rem;
+}
+.splash-stages {
+  display: flex; gap: .4rem; justify-content: center; flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.splash-stage-pill {
+  padding: .25rem .75rem; border-radius: 100px;
+  font-size: .65rem; font-weight: 700;
+  border: 1px solid; opacity: .65;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.skill-card { animation: fadeUp .4s ease both; }
+
+/* ─── MOBILE ─── */
+@media(max-width: 640px) {
+  .nav { padding: .8rem 1rem; }
+  .hero { padding: 2.5rem 1rem 2rem; }
+  .main { padding: 1.5rem 1rem 3rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .stage-header { padding: 1.2rem 1.3rem; }
+  .nav-progress { display: none; }
+  .overview { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    <div>
+      <div class="nav-title">NGÔ CƯƠNG VORIAN</div>
+      <div class="nav-sub">Bản Đồ Thành Thạo AI 2026</div>
+    </div>
+  </div>
+  <div class="nav-progress">
+    <div class="nav-xp">⚡ <span id="xpNum">0</span> XP</div>
+    <div class="prog-wrap">
+      <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+      <div class="prog-txt"><span id="doneNum">0</span>/17</div>
+    </div>
+  </div>
+</nav>
+
+<div id="app-content" style="display:none">
+
+<!-- HERO -->
+<section class="hero" style="position:relative;z-index:1">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:1">
+    <div class="hero-badge">🗺️ ROADMAP 2026</div>
+    <h1>
+      BẢN ĐỒ<br>
+      <span class="g">Thành Thạo AI</span> <span class="v">2026</span>
+    </h1>
+    <p class="hero-tagline">
+      <strong>"Học đến đâu - Lập trình AI đến đó - Ứng dụng ngay vào Vorian"</strong>
+    </p>
+    <div class="stage-pills">
+      <div class="stage-pill" style="color:#A78BFA;border-color:rgba(139,92,246,.35);background:rgba(139,92,246,.08)" onclick="scrollToStage(0)">🧠 Giai đoạn 1</div>
+      <div class="stage-pill" style="color:#FCD34D;border-color:rgba(245,197,24,.35);background:rgba(245,197,24,.08)" onclick="scrollToStage(1)">⚔️ Giai đoạn 2</div>
+      <div class="stage-pill" style="color:#67E8F9;border-color:rgba(6,182,212,.35);background:rgba(6,182,212,.08)" onclick="scrollToStage(2)">⚙️ Giai đoạn 3</div>
+      <div class="stage-pill" style="color:#FB7185;border-color:rgba(244,63,94,.35);background:rgba(244,63,94,.08)" onclick="scrollToStage(3)">👑 Giai đoạn 4</div>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <!-- OVERVIEW -->
+  <div class="overview" id="overview">
+    <div class="ov-item">
+      <div class="ov-num" id="ov1" style="color:var(--s1)">0</div>
+      <div class="ov-label">🧠 Nền tảng tư duy</div>
+      <div class="ov-bar"><div class="ov-bar-fill" id="ob1" style="width:0%;background:var(--s1)"></div></div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num" id="ov2" style="color:var(--s2)">0</div>
+      <div class="ov-label">⚔️ Ứng dụng thực chiến</div>
+      <div class="ov-bar"><div class="ov-bar-fill" id="ob2" style="width:0%;background:var(--s2)"></div></div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num" id="ov3" style="color:var(--s3)">0</div>
+      <div class="ov-label">⚙️ Tích hợp & Tự động hóa</div>
+      <div class="ov-bar"><div class="ov-bar-fill" id="ob3" style="width:0%;background:var(--s3)"></div></div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num" id="ov4" style="color:var(--s4)">0</div>
+      <div class="ov-label">👑 Kiểm soát & Lãnh đạo</div>
+      <div class="ov-bar"><div class="ov-bar-fill" id="ob4" style="width:0%;background:var(--s4)"></div></div>
+    </div>
+  </div>
+
+  <!-- STAGES rendered by JS -->
+  <div id="stagesContainer"></div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">NGÔ CƯƠNG VORIAN</div>
+  <div class="footer-copy">© 2026 Bản Đồ Thành Thạo AI — Học đến đâu, ứng dụng ngay đến đó.</div>
+     <div class="footer-COPY">"Tri thức là ánh sáng, nhưng người thắp lửa cũng cần được tiếp thêm năng lượng </div>
+      <div class="footer-COPY">Nếu bạn thấy những giá trị vừa rồi đã làm thay đổi góc nhìn của mình, hãy dành một </div>
+ <div class="footer-COPY">sự tri ân xứng tầm để dòng chảy tri thức này không bao giờ dừng lại" </div>
+ <div class="footer-COPY">   Gưi Producer 2 668.000 Đ  TK ACB 17359847 NGÔ VĂN CƯƠNG </div>
+    <div class="footer-COPY">Nội dung: [Tên của bạn] - Tri ân tri thức vô giá </div>
+</footer>
+
+</div><!-- end app-content -->
+
+<script>
+/* ═══════════════ DATA ═══════════════ */
+const STAGES = [
+  {
+    id: 's1',
+    num: '01',
+    icon: '🧠',
+    label: 'GIAI ĐOẠN 1',
+    name: 'NỀN TẢNG TƯ DUY',
+    sub: 'Thiết lập Bộ não số',
+    desc: 'Đừng gõ phím khi chưa rõ tư duy. Kích hoạt AI như một chuyên gia thực thụ.',
+    color: '#8B5CF6',
+    colorBg: 'rgba(139,92,246,.08)',
+    colorBord: 'rgba(139,92,246,.2)',
+    skills: [
+      {
+        emoji: '🎯',
+        num: '01',
+        title: 'Prompt Engineering — Kỹ sư câu lệnh',
+        ban_chat: `<strong>AI phản hồi đúng với độ rõ của tư duy.</strong> Kỹ năng làm rõ chính suy nghĩ của anh trước khi ra lệnh.<br><br>Cấu trúc bắt buộc: <strong>Vai trò + Ngữ cảnh + Mục tiêu + Giới hạn + Phong cách</strong>`,
+        vi_du: `Thay vì gõ <em>"Lập kế hoạch kinh doanh"</em>, hãy gõ:<br><br>"<strong>Hãy đóng vai chuyên gia chiến lược kinh doanh cấp cao.</strong> Vorian đang có mô hình A, vốn B, thị trường C. Mục tiêu 12 tháng tới là D. Đề xuất 3 chiến lược khả thi, phân tích ưu/nhược/rủi ro. Viết ngắn gọn, gạch đầu dòng rõ ràng."`,
+        hanh_dong: 'Chọn 1 mục tiêu tuần này của doanh nghiệp anh và điền vào mẫu Prompt trên, gởi cho GPT ngay lúc này.',
+        cmd: `Hãy đóng vai chuyên gia chiến lược kinh doanh cấp cao. Vorian đang có mô hình [A], vốn [B], thị trường [C]. Mục tiêu 12 tháng tới là [D]. Đề xuất 3 chiến lược khả thi, phân tích ưu/nhược/rủi ro. Viết ngắn gọn, gạch đầu dòng rõ ràng.`,
+        mo_ta: 'GPT chuyên biến yêu cầu mơ hồ thành prompt rõ ràng, sắc bén, có cấu trúc và dùng được ngay, phù hợp cho người mới dùng AI lẫn người dùng chuyên sâu muốn tăng mạnh chất lượng đầu ra.',
+        gpt_name: 'Lập Ngôn',
+        gpt_link: 'https://chatgpt.com/g/g-69d92cd968348191a851169af1e2c588-kien-tao-cau-lenh-lap-ngon'
+      },
+      {
+        emoji: '🥞',
+        num: '02',
+        title: 'Prompt Layering — Lệnh lồng nhiều tầng',
+        ban_chat: `<strong>Chia nhỏ vấn đề lớn thành dòng chảy chiến lược.</strong> Thiết kế "dòng suy nghĩ" cho AI.<br><br>Dẫn dắt qua 5 tầng: <strong>Làm rõ ➔ Phân tích ➔ Phương án ➔ Phản biện ➔ Quyết định</strong>`,
+        vi_du: `Giải quyết 1 vấn đề kinh doanh qua 5 tầng:<br><ul><li><strong>Tầng 1 (Làm rõ):</strong> "Hỏi ngược lại tôi 5 câu để làm rõ vấn đề này."</li><li><strong>Tầng 2 (Phân tích):</strong> "Phân tích vấn đề ở tầng gốc (First Principles)."</li><li><strong>Tầng 3 (Phương án):</strong> "Đề xuất 3 hướng giải quyết khác bản chất."</li><li><strong>Tầng 4 (Phản biện):</strong> "Chỉ ra rủi ro ẩn của từng phương án."</li><li><strong>Tầng 5 (Quyết định):</strong> "Nếu tôi ưu tiên lợi nhuận dài hạn, chọn phương án nào?"</li></ul>`,
+        hanh_dong: 'Copy Tầng 1 dán vào GPT để xử lý một dự án đang bế tắc.',
+        cmd: `Hỏi ngược lại tôi 5 câu để làm rõ vấn đề này: [Mô tả vấn đề của bạn]`,
+        mo_ta: 'GPT chuyên bóc tách một vấn đề phức tạp thành nhiều tầng tư duy rõ ràng để người dùng nhìn sâu hơn, phản biện chắc hơn và ra quyết định tốt hơn.',
+        gpt_name: 'Trùng Luận',
+        gpt_link: 'https://chatgpt.com/g/g-69d9ef9b42808191a360f391f670a466-luan-giai-da-tang-trung-luan'
+      },
+      {
+        emoji: '🎭',
+        num: '03',
+        title: 'Persona Design — Xây dựng bản sắc AI',
+        ban_chat: `<strong>Đúc linh hồn và phong cách làm việc của anh vào AI.</strong> Lập trình tính cách, quan điểm và tông giọng riêng.<br><br>Thiết kế các chuyên gia mang bản sắc của riêng anh: CEO, Chuyên gia tâm lý, Cố vấn chiến lược...`,
+        vi_du: `Kích hoạt "<strong>Ngô Cương GPT</strong>":<br><br>"GPT, nhập vai là Chiến lược gia Ngô Cương: Tư duy phản biện kiểu cắt rễ vấn đề. Phong cách: minh triết, hệ thống, không dông dài. Luôn hỏi ngược để tôi đào sâu. Sẵn sàng chưa? Trả lời: Tôi là Ngô Cương GPT."`,
+        hanh_dong: 'Thiết lập ngay 1 Persona "Giám đốc Nhân sự khó tính" để duyệt lại các chính sách nội bộ.',
+        cmd: `GPT, nhập vai là Chiến lược gia Ngô Cương: Tư duy phản biện kiểu cắt rễ vấn đề. Phong cách: minh triết, hệ thống, không dông dài. Luôn hỏi ngược để tôi đào sâu. Sẵn sàng chưa? Trả lời: Tôi là Ngô Cương GPT.`,
+        mo_ta: 'GPT chuyên tạo persona AI rõ vai, rõ giọng, rõ nguyên tắc và có khí chất riêng, phù hợp cho người xây Custom GPT, AI agent hoặc hệ trợ lý AI cần tính nhất quán và bản sắc mạnh.',
+        gpt_name: 'Chính Danh',
+        gpt_link: 'https://chatgpt.com/g/g-69d9e200d8e08191a405a664fae72aaf-thiet-ke-nhan-dang-ai-chinh-danh'
+      },
+      {
+        emoji: '🏛️',
+        num: '04',
+        title: 'Socratic Prompting — Khai vấn triết học',
+        ban_chat: `<strong>Dùng AI để gợi mở, chất vấn và dẫn dắt chính tư duy của mình — không đòi đáp án sẵn.</strong><br><br>Yêu cầu GPT không trả lời ngay, mà liên tục đặt câu hỏi ngược để soi sáng các giả định và giúp anh tự nghĩ sâu hơn.`,
+        vi_du: `"GPT, đóng vai người chất vấn Socratic. Giúp tôi làm rõ suy nghĩ bằng cách hỏi phản tư liên tục. Tôi nói 1 điều, bạn hỏi lại 1 câu. Bắt đầu bằng: <strong>'Điều gì khiến anh tin đây là sự thật?'</strong>"`,
+        hanh_dong: 'Dùng prompt này khi anh đang phân vân giữa 2 quyết định lớn để xem niềm tin nào đang dẫn dắt anh.',
+        cmd: `GPT, đóng vai người chất vấn Socratic. Giúp tôi làm rõ suy nghĩ bằng cách hỏi phản tư liên tục. Tôi nói 1 điều, bạn hỏi lại 1 câu. Bắt đầu bằng: "Điều gì khiến anh tin đây là sự thật?"`,
+        mo_ta: 'GPT chuyên đào sâu vấn đề bằng câu hỏi ngược sắc bén để người dùng tự nhìn ra giả định, điểm mù, nỗi sợ và niềm tin gốc đang chi phối suy nghĩ.',
+        gpt_name: 'Cùng Lý',
+        gpt_link: 'https://chatgpt.com/g/g-69d9f08501348191b8ec950bbee95011-khai-van-can-nguyen-cung-ly'
+      },
+      {
+        emoji: '🧩',
+        num: '05',
+        title: 'Mental Models — Mô hình tư duy',
+        ban_chat: `<strong>Ép AI suy luận theo logic của các bậc thầy (Elon Musk, Warren Buffett...).</strong><br><br>Áp dụng: First Principles (Nguyên lý gốc), Second-order Thinking (Hệ quả tầng 2), Inversion (Tư duy ngược).`,
+        vi_du: `"Phân tích phương án này theo:<br>1. <strong>First Principles</strong> (Bản chất thật sự).<br>2. <strong>Second-order Thinking</strong> (Hệ quả dài hạn).<br>3. <strong>Inversion</strong> (Nếu muốn nó thất bại hoàn toàn, tôi nên làm gì?)."`,
+        hanh_dong: 'Áp dụng mô hình Inversion (Tư duy ngược) cho kế hoạch doanh thu quý tới của anh.',
+        cmd: `Phân tích phương án [mô tả phương án] theo:\n1. First Principles (Bản chất thật sự).\n2. Second-order Thinking (Hệ quả dài hạn).\n3. Inversion (Nếu muốn nó thất bại hoàn toàn, tôi nên làm gì?).`,
+        mo_ta: 'GPT chuyên phân tích vấn đề bằng các mental models mạnh như nguyên lý gốc, hệ quả tầng hai và tư duy ngược, giúp người dùng nhìn sâu hơn mức thông thường.',
+        gpt_name: 'Cách Vật',
+        gpt_link: 'https://chatgpt.com/g/g-69d9f2bce4e88191810aeebbf90c9e2d-suy-luan-theo-mo-hinh-cach-vat'
+      },
+    ]
+  },
+  {
+    id: 's2',
+    num: '02',
+    icon: '⚔️',
+    label: 'GIAI ĐOẠN 2',
+    name: 'ỨNG DỤNG THỰC CHIẾN',
+    sub: 'Giải quyết Vấn đề thật',
+    desc: 'Mang AI vào bàn làm việc. Biến AI thành cố vấn cấp cao.',
+    color: '#F59E0B',
+    colorBg: 'rgba(245,158,11,.08)',
+    colorBord: 'rgba(245,158,11,.2)',
+    skills: [
+      {
+        emoji: '🧘‍♂️',
+        num: '06',
+        title: 'Self-Coaching AI — Gương soi tâm lý',
+        ban_chat: `<strong>AI là người huấn luyện tư duy, soi chiếu nội tâm để vượt nghẽn tâm lý.</strong><br><br>Dùng AI như một tấm gương phản chiếu cảm xúc, giúp soi sáng điểm nghẽn và tháo gỡ áp lực tâm lý mà không phán xét.`,
+        vi_du: `"Đóng vai huấn luyện viên nhận thức. Không khuyên bảo, chỉ phản chiếu suy nghĩ. Bắt đầu hỏi: <strong>'Điều gì khiến anh thấy mệt mỏi nhất hiện tại?'</strong>"`,
+        hanh_dong: 'Tâm sự 10 phút với AI tối nay để gỡ bỏ áp lực điều hành.',
+        cmd: `Đóng vai huấn luyện viên nhận thức. Không khuyên bảo, chỉ phản chiếu suy nghĩ. Bắt đầu hỏi: "Điều gì khiến anh thấy mệt mỏi nhất hiện tại?"`,
+        mo_ta: 'GPT chuyên lắng nghe, gọi tên và phản chiếu cảm xúc, áp lực và nút thắt bên trong một cách sâu, sáng và không phán xét.',
+        gpt_name: 'Minh Tâm',
+        gpt_link: 'https://chatgpt.com/g/g-69d9f4df03ac8191aa286e1e130acb00-phan-chieu-noi-tam-minh-tam'
+      },
+      {
+        emoji: '♟️',
+        num: '07',
+        title: 'Strategic Solver — Bộ giải quyết Chiến lược',
+        ban_chat: `<strong>Xử lý vấn đề hóc búa theo logic của người điều hành cấp cao.</strong><br><br>Cung cấp cho AI 4 mảnh ghép: Mục tiêu mong muốn ➔ Bối cảnh hiện tại ➔ Ràng buộc ➔ Mâu thuẫn cốt lõi.`,
+        vi_du: `"Tôi trình bày vấn đề gồm:<br>1. Mục tiêu mong muốn.<br>2. Bối cảnh hiện tại.<br>3. Ràng buộc (vốn/thời gian).<br>4. Mâu thuẫn cốt lõi.<br>Hãy phân tích nguyên nhân gốc, gợi ý 3 giải pháp và tự phản biện từng giải pháp."`,
+        hanh_dong: 'Điền 4 thông tin trên cho 1 dự án anh đang chuẩn bị đấu thầu.',
+        cmd: `Tôi trình bày vấn đề gồm:\n1. Mục tiêu mong muốn: [điền vào]\n2. Bối cảnh hiện tại: [điền vào]\n3. Ràng buộc (vốn/thời gian): [điền vào]\n4. Mâu thuẫn cốt lõi: [điền vào]\nHãy phân tích nguyên nhân gốc, gợi ý 3 giải pháp và tự phản biện từng giải pháp.`,
+        mo_ta: 'GPT chuyên tháo gỡ các bài toán khó bằng tư duy chiến lược, cân bằng giữa mục tiêu, hiện trạng, ràng buộc, rủi ro và khả năng thi hành.',
+        gpt_name: 'Kinh Thế',
+        gpt_link: 'https://chatgpt.com/g/g-69d9ff9c68488191a49c7a390a3ac90e-giai-the-chien-luoc-kinh-the'
+      },
+      {
+        emoji: '🎓',
+        num: '08',
+        title: 'Learning Assistant — Gia sư thiết kế lộ trình',
+        ban_chat: `<strong>AI dạy anh đúng thứ anh cần, theo tốc độ của anh.</strong><br><br>Huấn luyện GPT thiết kế lộ trình học cá nhân hóa, có bài tập tình huống thực tế và các câu hỏi quiz để kiểm tra sự hiểu biết.`,
+        vi_du: `"Tôi muốn học về <strong>[Kinh Dịch/Tài chính doanh nghiệp]</strong>. Thiết kế lộ trình 7 ngày. Mỗi ngày gồm: 1 bài học dưới 200 từ, 1 ví dụ thực tế, 1 câu hỏi kiểm tra (quiz) và 1 gợi ý ứng dụng."`,
+        hanh_dong: 'Yêu cầu GPT tạo ngay bài học Ngày 1 cho chủ đề anh muốn học.',
+        cmd: `Tôi muốn học về [chủ đề bạn chọn]. Thiết kế lộ trình 7 ngày. Mỗi ngày gồm: 1 bài học dưới 200 từ, 1 ví dụ thực tế, 1 câu hỏi kiểm tra (quiz) và 1 gợi ý ứng dụng.`,
+        mo_ta: 'GPT chuyên thiết kế lộ trình học cá nhân hóa, dễ hiểu, có ví dụ và áp dụng được ngay, phù hợp cho người mới bắt đầu lẫn người đang muốn nâng kỹ năng theo cách có hệ thống.',
+        gpt_name: 'Hiếu Học',
+        gpt_link: 'https://chatgpt.com/g/g-69da0404b9008191862bcb6740c90b91-gia-su-hoc-tap-ca-nhan-hieu-hoc'
+      },
+      {
+        emoji: '🕸️',
+        num: '09',
+        title: 'Systems Thinking — Tư duy hệ thống',
+        ban_chat: `<strong>Nhìn tổng thể trận đồ, tìm nguyên nhân gốc rễ và điểm đòn bẩy.</strong><br><br>Nhờ AI vẽ lại bản đồ hệ thống của vấn đề. Xác định rõ các Vòng lặp (Feedback loop) và tìm ra Điểm đòn bẩy (Leverage point) thay vì chỉ chữa triệu chứng.`,
+        vi_du: `"Hiện tượng: <strong>[Nhân sự không chủ động]</strong>. Vẽ sơ đồ nguyên nhân - hệ quả. Xác định các vòng lặp. Chỉ ra 1 điểm đòn bẩy nhỏ nhưng tạo thay đổi lớn toàn hệ thống."`,
+        hanh_dong: 'Tìm 1 điểm nghẽn trong vận hành công ty và đưa vào framework này.',
+        cmd: `Hiện tượng: [mô tả vấn đề của bạn]. Vẽ sơ đồ nguyên nhân - hệ quả. Xác định các vòng lặp. Chỉ ra 1 điểm đòn bẩy nhỏ nhưng tạo thay đổi lớn toàn hệ thống.`,
+        mo_ta: 'GPT chuyên nhìn vấn đề như một hệ thống động với các yếu tố, quan hệ, vòng lặp và điểm đòn bẩy, phù hợp cho các vấn đề dai dẳng, lặp đi lặp lại hoặc khó xử lý tận gốc.',
+        gpt_name: 'Thông Cục',
+        gpt_link: 'https://chatgpt.com/g/g-69da07a800f08191ac0802d8216b5a27-ban-do-he-thong-thong-cuc'
+      },
+      {
+        emoji: '💎',
+        num: '10',
+        title: 'Legacy GPT — Đóng gói Di sản',
+        ban_chat: `<strong>Lưu trữ hệ tư tưởng, bài học và quyết định để xây dựng thư viện trí tuệ cá nhân.</strong><br><br>Dùng AI lưu trữ, phản chiếu và tổ chức lại những trải nghiệm, bài học, quyết định và triết lý sống cốt lõi thành một "Di sản số".`,
+        vi_du: `"Đóng vai 'Di sản sống'. Mỗi tối hãy hỏi tôi:<br>1. Bài học sâu sắc nhất hôm nay?<br>2. Giá trị sống nào được thử thách?<br>3. Làm sao biến nó thành nguyên lý sống dài hạn?"`,
+        hanh_dong: 'Tối nay, hãy trả lời 3 câu hỏi này với AI để lưu lại bài học của ngày.',
+        cmd: `Đóng vai 'Di sản sống'. Hỏi tôi:\n1. Bài học sâu sắc nhất hôm nay?\n2. Giá trị sống nào được thử thách?\n3. Làm sao biến nó thành nguyên lý sống dài hạn?`,
+        mo_ta: 'GPT chuyên chưng cất trải nghiệm, va chạm, suy ngẫm và quyết định thành bài học, nguyên lý và tài sản tri thức có thể lưu giữ và dùng lại lâu dài.',
+        gpt_name: 'Tàng Đạo',
+        gpt_link: 'https://chatgpt.com/g/g-69da0a6caa4c8191862fbc0b76ebe437-kho-di-san-tri-tue-tang-dao'
+      },
+    ]
+  },
+  {
+    id: 's3',
+    num: '03',
+    icon: '⚙️',
+    label: 'GIAI ĐOẠN 3',
+    name: 'TÍCH HỢP & TỰ ĐỘNG HÓA',
+    sub: 'Xây dựng Cỗ máy',
+    desc: 'Hành động thay người. Để máy móc làm việc lặp lại, giữ bộ não cho chiến lược.',
+    color: '#06B6D4',
+    colorBg: 'rgba(6,182,212,.08)',
+    colorBord: 'rgba(6,182,212,.2)',
+    skills: [
+      {
+        emoji: '🛠️',
+        num: '11',
+        title: 'Tool Mastery — Kết hợp siêu công cụ',
+        ban_chat: `<strong>Kết hợp GPT với Code Interpreter, Web Browsing, Vision để xử lý dữ liệu thực tế.</strong><br><br>Tính toán, phân tích dữ liệu, đọc bản vẽ và tra cứu thời gian thực ngay trong GPT.`,
+        vi_du: `(Tải file Excel báo cáo lên) "<strong>Dùng Code Interpreter phân tích:</strong> Tổng thu chi từng tháng, khoản chi vượt mức, và vẽ biểu đồ tối ưu hóa ngân sách."`,
+        hanh_dong: 'Kéo thả 1 file PDF/Excel tài liệu công việc vào GPT và yêu cầu tóm tắt/phân tích.',
+        cmd: `[Tải file lên] Dùng Code Interpreter phân tích: Tổng thu chi từng tháng, khoản chi vượt mức, và vẽ biểu đồ tối ưu hóa ngân sách.`,
+        mo_ta: 'GPT chuyên chọn đúng công cụ, đúng cách kết hợp và đúng workflow AI để xử lý file, dữ liệu, web, hình ảnh và tác vụ thực chiến hiệu quả hơn.',
+        gpt_name: 'Dụng Khí',
+        gpt_link: 'https://chatgpt.com/g/g-69da0d3a4f6481918b7167497737b45a-hop-nhat-cong-cu-ai-dung-khi'
+      },
+      {
+        emoji: '💻',
+        num: '12',
+        title: 'Prompt Engineering 10X — Lập trình chuỗi',
+        ban_chat: `<strong>Thiết kế 1 chuỗi lệnh (Prompt Chain) chạy liên tục như một phần mềm.</strong><br><br>Viết câu lệnh như một Lập trình viên. Biến mỗi prompt thành một phần mềm mini chuyên biệt, xử lý chuỗi tác vụ tự động.`,
+        vi_du: `Tạo 1 luồng:<br><strong>Prompt 1:</strong> Phân tích insight khách hàng<br><strong>Prompt 2:</strong> Viết nội dung<br><strong>Prompt 3:</strong> Đóng vai chuyên gia phản biện và sửa lại bài viết.`,
+        hanh_dong: 'Xây dựng 1 chuỗi lệnh cố định để tự động hóa khâu viết content bán hàng.',
+        cmd: `Prompt Chain viết content:\nP1: Phân tích insight khách hàng mục tiêu của [sản phẩm/dịch vụ]\nP2: Viết nội dung dựa trên insight trên\nP3: Đóng vai chuyên gia marketing phản biện và tối ưu lại bài viết`,
+        mo_ta: 'GPT chuyên biến công việc lớn thành workflow AI nhiều bước, rõ đầu vào, rõ đầu ra và có thể tái sử dụng, phù hợp cho các việc lặp lại hoặc cần chuẩn hóa.',
+        gpt_name: 'Liên Trình',
+        gpt_link: 'https://chatgpt.com/g/g-69da1ab3e3b881919cadb44a26fa9c16-thiet-ke-chuoi-tac-vu-lien-trinh'
+      },
+      {
+        emoji: '🌐',
+        num: '13',
+        title: 'AI Life OS — Hệ điều hành Cuộc đời',
+        ban_chat: `<strong>Biến GPT thành hệ thống quản lý mục tiêu, tiến trình và phản tư.</strong><br><br>Nhắc nhở mục tiêu, phân tích cảm xúc, theo dõi tiến độ công việc và phản tư mỗi ngày.`,
+        vi_du: `"Hãy làm AI Life OS. Quản lý mục tiêu 90 ngày. Mỗi sáng gợi ý nhịp sống ưu tiên. Mỗi tối 22h hỏi tôi để phản tư, và nhắc tôi reset mỗi Chủ nhật."`,
+        hanh_dong: 'Khai báo 3 mục tiêu trọng tâm quý này vào GPT để thiết lập OS.',
+        cmd: `Hãy làm AI Life OS của tôi. Quản lý mục tiêu 90 ngày: [Mục tiêu 1], [Mục tiêu 2], [Mục tiêu 3]. Mỗi sáng gợi ý nhịp sống ưu tiên. Mỗi tối hỏi tôi để phản tư, nhắc reset mỗi Chủ nhật.`,
+        mo_ta: 'GPT chuyên giúp người dùng vận hành ngày, tuần và mục tiêu dài hạn bằng AI theo nhịp rõ ràng, có ưu tiên, có phản tư và có điều chỉnh.',
+        gpt_name: 'Tam Tỉnh',
+        gpt_link: 'https://chatgpt.com/g/g-69da1d79d968819197d23eb517873c3d-he-dieu-hanh-cuoc-song-tam-tinh'
+      },
+      {
+        emoji: '🤖',
+        num: '14',
+        title: 'Automation Integration — Tự động hóa Doanh nghiệp',
+        ban_chat: `<strong>Nối GPT với Zapier/Make, CRM, Notion để hành động xuyên nền tảng.</strong><br><br>Ghép nối AI với các công cụ như Zapier, Notion, CRM, Google Sheets. Xây dựng bộ não vận hành doanh nghiệp chạy ngầm không cần thao tác tay.`,
+        vi_du: `Luồng chạy ngầm:<br><strong>GPT viết content</strong> → <strong>Zapier tự động đăng lên Fanpage</strong> → <strong>Zapier lưu bản sao vào Google Sheets</strong> và báo cáo qua Gmail.`,
+        hanh_dong: 'Tạo 1 tài khoản Zapier và thiết lập kết nối thử nghiệm đầu tiên giữa Gmail và ChatGPT.',
+        cmd: `Thiết kế luồng Automation cho [loại công việc]: \nBước 1 - GPT xử lý: [mô tả]\nBước 2 - Zapier kết nối tới: [công cụ]\nBước 3 - Lưu trữ kết quả vào: [nơi lưu]\nBước 4 - Thông báo qua: [kênh]`,
+        mo_ta: 'GPT chuyên thiết kế flow tự động giữa AI và các nền tảng số như Gmail, Sheets, CRM, Notion, Zapier hoặc Make để giảm thao tác tay và tăng vận hành ngầm.',
+        gpt_name: 'Liên Cơ',
+        gpt_link: 'https://chatgpt.com/g/g-69da212064c881918af4ae57d0f7d0fa-lien-ket-tu-dong-hoa-lien-co'
+      },
+    ]
+  },
+  {
+    id: 's4',
+    num: '04',
+    icon: '👑',
+    label: 'GIAI ĐOẠN 4',
+    name: 'KIỂM SOÁT & LÃNH ĐẠO',
+    sub: 'Quyền trượng của Master',
+    desc: 'Tổ chức AI như tổ chức con người. Giữ vững la bàn đạo đức.',
+    color: '#F43F5E',
+    colorBg: 'rgba(244,63,94,.08)',
+    colorBord: 'rgba(244,63,94,.2)',
+    skills: [
+      {
+        emoji: '🎼',
+        num: '15',
+        title: 'Collaboration Orchestration — Điều phối Tổ đội AI',
+        ban_chat: `<strong>Đạo diễn nhiều AI làm việc cùng nhau như một team chuyên gia.</strong><br><br>Phân vai cho nhiều AI cùng làm việc (GPT CEO, GPT CFO, GPT Hoài nghi...) để chúng phản biện chéo và tìm ra giải pháp tối ưu nhất.`,
+        vi_du: `"<strong>GPT Idea:</strong> Đưa ra 3 giải pháp tăng doanh thu.<br><strong>GPT Risk:</strong> Phản biện và vạch lá tìm sâu từng giải pháp.<br><strong>GPT Strategist:</strong> Dựa vào A và B, chốt phương án cuối cùng."`,
+        hanh_dong: 'Thử ngay kịch bản "3 AI họp bàn" cho 1 chiến lược anh sắp triển khai.',
+        cmd: `GPT Idea: Đưa ra 3 giải pháp cho [vấn đề cụ thể].\nGPT Risk: Phản biện và vạch lá tìm sâu từng giải pháp.\nGPT Strategist: Dựa vào 2 kết quả trên, chốt phương án cuối cùng tốt nhất.`,
+        mo_ta: 'GPT chuyên dựng một tổ đội AI nhiều vai để cùng phân tích, phản biện và đi tới kết luận tốt hơn, đặc biệt hữu ích cho các bài toán đa chiều cần nhiều góc nhìn cùng lúc.',
+        gpt_name: 'Thống Trù',
+        gpt_link: 'https://chatgpt.com/g/g-69da239d6b108191ab03c51fab7f51f8-dieu-phoi-da-ai-thong-tru'
+      },
+      {
+        emoji: '🔄',
+        num: '16',
+        title: 'Feedback Loop — Chu trình tự học',
+        ban_chat: `<strong>Dạy AI học từ phản hồi và hành vi của chính anh để ngày càng sắc bén.</strong><br><br>Thiết lập quy trình để AI tự ghi nhớ sai lầm, điều chỉnh phản hồi và tự nâng cấp chính nó mỗi ngày.`,
+        vi_du: `"Cuối mỗi tuần, hãy tổng hợp lại tất cả phản hồi tôi đã sửa cho bạn. Rút ra 5 đặc điểm bạn học được từ phong cách của tôi và cập nhật nó cho tuần tới."`,
+        hanh_dong: 'Nhắc GPT cập nhật ngay 1 thói quen giao tiếp (ví dụ: luôn xưng hô anh/em, ngắn gọn) vào bộ nhớ.',
+        cmd: `Cuối tuần này, hãy tổng hợp lại tất cả phản hồi tôi đã sửa cho bạn. Rút ra 5 đặc điểm bạn học được từ phong cách của tôi và cập nhật nó cho tuần tới. Bắt đầu từ cuộc hội thoại này.`,
+        mo_ta: 'GPT chuyên học từ phản hồi của người dùng để ngày càng đúng gu, đúng chuẩn và ít lặp lỗi hơn, phù hợp cho người muốn cộng tác dài hạn với một GPT biết tiến bộ thật sự.',
+        gpt_name: 'Tự Tân',
+        gpt_link: 'https://chatgpt.com/g/g-69da25de5f608191a40f7114421a9ed4-vong-lap-tu-tinh-chinh-tu-tan'
+      },
+      {
+        emoji: '⚖️',
+        num: '17',
+        title: 'Ethical AI Commanding — Lãnh đạo AI có Đạo đức',
+        ban_chat: `<strong>Gắn la bàn đạo đức cho máy móc. Tuyệt đối không để AI quyết định thay giá trị sống.</strong><br><br>Thiết lập ranh giới đỏ. Đảm bảo AI chỉ là công cụ phân tích soi sáng, còn quyền ra quyết định về giá trị, sống-chết, đạo đức luôn thuộc về con người.`,
+        vi_du: `"Nguyên tắc cốt lõi: Bạn không được đưa ra quyết định thay tôi trong chuyện giá trị, sống-chết. Trước quyết định lớn, hãy luôn hỏi: <strong>'Việc này có đi ngược với giá trị tự do cá nhân và tỉnh thức của anh không?'</strong>"`,
+        hanh_dong: 'Lập danh sách 3 "Ranh giới đỏ" (Điều AI tuyệt đối không được làm) và dán vào Custom Instructions.',
+        cmd: `Nguyên tắc cốt lõi bạn phải tuân theo:\n1. Không đưa ra quyết định thay tôi trong chuyện giá trị, sống-chết.\n2. Trước quyết định lớn, hỏi: "Việc này có đi ngược với giá trị tự do cá nhân và tỉnh thức của anh không?"\n3. [Ranh giới đỏ của bạn]`,
+        mo_ta: 'GPT chuyên kiểm tra ranh giới đạo đức, trách nhiệm, quyền riêng tư và quyền quyết định của con người khi dùng AI, giúp người dùng triển khai AI mạnh nhưng không vượt khỏi giới hạn cần giữ.',
+        gpt_name: 'Tri Chỉ',
+        gpt_link: 'https://chatgpt.com/g/g-69da27b342448191baa1cc2312f0617c-la-ban-dao-duc-ai-tri-chi'
+      },
+    ]
+  },
+];
+
+/* ═══════════════ STATE ═══════════════ */
+const done = new Set(JSON.parse(localStorage.getItem('bd2026_done') || '[]'));
+let xp = parseInt(localStorage.getItem('bd2026_xp') || '0');
+
+function saveSt() {
+  localStorage.setItem('bd2026_done', JSON.stringify([...done]));
+  localStorage.setItem('bd2026_xp', '' + xp);
+}
+
+/* ═══════════════ RENDER ═══════════════ */
+function render() {
+  const container = document.getElementById('stagesContainer');
+  container.innerHTML = '';
+
+  STAGES.forEach((stage, si) => {
+    const sec = document.createElement('section');
+    sec.className = 'stage-section';
+    sec.id = stage.id;
+
+    // Stage header
+    const stageDone = stage.skills.filter((_, ki) => done.has(`${si}-${ki}`)).length;
+    sec.innerHTML = `
+      <div class="stage-header" style="background:${stage.colorBg};border:1px solid ${stage.colorBord}">
+        <div class="stage-num" style="color:${stage.color}">${stage.num}</div>
+        <div class="stage-icon-big">${stage.icon}</div>
+        <div class="stage-info">
+          <div class="stage-label" style="color:${stage.color}">${stage.label}</div>
+          <div class="stage-name" style="color:${stage.color}">${stage.name}</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.5);font-weight:600">${stage.sub}</div>
+          <div class="stage-desc">${stage.desc}</div>
+        </div>
+        <div class="stage-count" style="color:${stage.color}">${stageDone}/${stage.skills.length}</div>
+      </div>
+      <div class="skills-grid" id="grid-${si}"></div>
+    `;
+    container.appendChild(sec);
+
+    const grid = sec.querySelector(`#grid-${si}`);
+    stage.skills.forEach((skill, ki) => {
+      const key = `${si}-${ki}`;
+      const isDone = done.has(key);
+      const card = document.createElement('div');
+      card.className = 'skill-card' + (isDone ? ' done' : '');
+      card.style.animationDelay = `${ki * 0.07}s`;
+      card.id = `card-${key}`;
+      card.innerHTML = `
+        <div class="card-head">
+          <div class="skill-num-badge" style="background:${stage.colorBg};color:${stage.color};border:1px solid ${stage.colorBord}">${skill.num}</div>
+          <div class="card-title-wrap">
+            <div class="skill-emoji">${skill.emoji}</div>
+            <div class="skill-title">${skill.title}</div>
+          </div>
+          <div class="skill-done-check">✓</div>
+        </div>
+        <div class="card-tabs">
+          <button class="tab-btn active" onclick="switchTab('${key}','bc',this)">🧠 Bản chất</button>
+          <button class="tab-btn" onclick="switchTab('${key}','vd',this)">💡 Ví dụ</button>
+          <button class="tab-btn" onclick="switchTab('${key}','hd',this)">🎯 Hành động</button>
+          <button class="tab-btn" onclick="switchTab('${key}','mt',this)">📝 Mô tả</button>
+        </div>
+        <div class="card-body">
+          <div class="tab-panel active" id="tp-${key}-bc">
+            <div class="ban-chat">${skill.ban_chat}</div>
+          </div>
+          <div class="tab-panel" id="tp-${key}-vd">
+            <div class="vi-du-box">
+              <div class="quote-mark">"</div>
+              ${skill.vi_du}
+            </div>
+          </div>
+          <div class="tab-panel" id="tp-${key}-hd">
+            <div class="hanh-dong">
+              <div class="hanh-dong-icon">⚡</div>
+              <div>${skill.hanh_dong}</div>
+            </div>
+          </div>
+          <div class="tab-panel" id="tp-${key}-mt">
+            <div class="mo-ta-box">
+              <div class="mo-ta-icon">📝</div>
+              <div>${skill.mo_ta || ''}</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <button class="copy-cmd-btn" id="cpybtn-${key}" onclick="copyCmd('${key}')">📋 Copy câu lệnh</button>
+          <a class="gpt-btn" href="${skill.gpt_link || 'https://chat.openai.com'}" target="_blank" rel="noopener" title="Mở GPTs ${skill.gpt_name || ''}">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.28 9.28a5.88 5.88 0 0 0-.52-4.89 6.1 6.1 0 0 0-6.57-2.88A5.92 5.92 0 0 0 10.72 0a6.1 6.1 0 0 0-5.82 4.21 5.9 5.9 0 0 0-3.94 2.86 6.09 6.09 0 0 0 .75 7.15 5.88 5.88 0 0 0 .52 4.89 6.1 6.1 0 0 0 6.57 2.88A5.92 5.92 0 0 0 13.28 24a6.1 6.1 0 0 0 5.82-4.22 5.9 5.9 0 0 0 3.93-2.86 6.09 6.09 0 0 0-.75-7.14zm-9 12.63a4.52 4.52 0 0 1-2.9-1.05l.14-.08 4.82-2.78a.8.8 0 0 0 .4-.69v-6.8l2.04 1.18a.07.07 0 0 1 .04.06v5.62a4.56 4.56 0 0 1-4.54 4.54zm-9.77-4.18a4.52 4.52 0 0 1-.54-3.05l.14.08 4.82 2.78a.79.79 0 0 0 .79 0l5.89-3.4v2.35a.08.08 0 0 1-.03.06L9.6 19.3a4.56 4.56 0 0 1-6.09-1.57zm-1.27-9.97a4.51 4.51 0 0 1 2.36-1.98v5.72a.79.79 0 0 0 .4.68l5.87 3.39-2.04 1.18a.08.08 0 0 1-.07 0L4.1 13.6a4.56 4.56 0 0 1-.86-5.84zm16.77 3.91L13.12 8.3l2.04-1.18a.07.07 0 0 1 .07 0l4.87 2.81a4.55 4.55 0 0 1-.7 8.21V12.5a.79.79 0 0 0-.4-.68zm2.03-3.06-.14-.08-4.81-2.8a.8.8 0 0 0-.8 0L9.41 9.14V6.79a.07.07 0 0 1 .03-.06l4.87-2.81a4.55 4.55 0 0 1 6.73 4.71zm-12.76 4.2L6.24 11.6a.08.08 0 0 1-.04-.06V5.93a4.55 4.55 0 0 1 7.46-3.49l-.14.08-4.82 2.78a.79.79 0 0 0-.4.69v6.79zm1.1-2.39 2.62-1.51 2.62 1.51v3.02l-2.62 1.51-2.62-1.51V9.42z"/></svg>
+            GPTs ${skill.gpt_name || ''}
+          </a>
+          <button class="done-btn" onclick="toggleDone('${key}')">${isDone ? '✅ Hoàn thành' : '○ Đánh dấu xong'}</button>
+        </div>
+      `;
+
+      // Color card border on hover based on stage
+      card.style.setProperty('--card-color', stage.color);
+      card.querySelector('::before');
+
+      // Add dynamic before pseudo using box shadow
+      card.addEventListener('mouseenter', () => {
+        if (!isDone) card.style.borderColor = stage.color + '44';
+      });
+      card.addEventListener('mouseleave', () => {
+        if (!done.has(key)) card.style.borderColor = '';
+      });
+
+      grid.appendChild(card);
+    });
+  });
+
+  updateStats();
+}
+
+function switchTab(key, tab, btn) {
+  // Deactivate all tabs in this card
+  const card = document.getElementById(`card-${key}`);
+  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`tp-${key}-${tab}`).classList.add('active');
+}
+
+function copyCmd(key) {
+  const [si, ki] = key.split('-').map(Number);
+  const cmd = STAGES[si].skills[ki].cmd;
+  navigator.clipboard.writeText(cmd).then(() => {
+    const btn = document.getElementById(`cpybtn-${key}`);
+    btn.textContent = '✅ Đã copy!';
+    btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = '📋 Copy câu lệnh'; btn.classList.remove('ok'); }, 2000);
+  });
+}
+
+function toggleDone(key) {
+  const card = document.getElementById(`card-${key}`);
+  const btn = card.querySelector('.done-btn');
+  const check = card.querySelector('.skill-done-check');
+  if (done.has(key)) {
+    done.delete(key);
+    xp = Math.max(0, xp - 100);
+    card.classList.remove('done');
+    btn.textContent = '○ Đánh dấu xong';
+    card.style.borderColor = '';
+  } else {
+    done.add(key);
+    xp += 100;
+    card.classList.add('done');
+    btn.textContent = '✅ Hoàn thành';
+    // Flash animation
+    card.style.transform = 'scale(1.02)';
+    setTimeout(() => { card.style.transform = ''; }, 300);
+  }
+  saveSt();
+  updateStats();
+}
+
+function updateStats() {
+  const total = STAGES.reduce((a, s) => a + s.skills.length, 0);
+  const totalDone = done.size;
+  const pct = Math.round(totalDone / total * 100);
+
+  document.getElementById('xpNum').textContent = xp.toLocaleString();
+  document.getElementById('doneNum').textContent = totalDone;
+  document.getElementById('progFill').style.width = pct + '%';
+
+  STAGES.forEach((stage, si) => {
+    const stageDone = stage.skills.filter((_, ki) => done.has(`${si}-${ki}`)).length;
+    const stagePct = Math.round(stageDone / stage.skills.length * 100);
+    const ovEl = document.getElementById(`ov${si + 1}`);
+    const obEl = document.getElementById(`ob${si + 1}`);
+    if (ovEl) ovEl.textContent = `${stageDone}/${stage.skills.length}`;
+    if (obEl) obEl.style.width = stagePct + '%';
+
+    // Update stage header count
+    const countEl = document.querySelector(`#${stage.id} .stage-count`);
+    if (countEl) countEl.textContent = `${stageDone}/${stage.skills.length}`;
+  });
+}
+
+function scrollToStage(idx) {
+  const el = document.getElementById(STAGES[idx].id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+
+// Init
+render();
+</script>
+
+<script>
+// ============================================================
+// LICENSE GATE — Hệ thống bảo vệ bản quyền
+// ============================================================
+
+// ===== CẤU HÌNH =====
+const API_URL = 'https://script.google.com/macros/s/AKfycbzW7d_rrdMJFYcEWfO15_s0AnqRJEfsJ8yiI1dSBAa1H5zyYVnYOKQ8oxn_lU0gFgTb/exec';
+const ADMIN_CONTACT = 'cuongvenicngo@gmail.com';
+
+// ===== LẤY FINGERPRINT (ổn định) =====
+async function getFingerprint() {
+  const raw = [
+    navigator.userAgent,
+    navigator.language,
+    screen.width + 'x' + screen.height,
+    screen.colorDepth,
+    new Date().getTimezoneOffset(),
+    navigator.hardwareConcurrency || 'na',
+    navigator.platform || 'na'
+  ].join('|');
+  let hash = 0;
+  for (let i = 0; i < raw.length; i++) {
+    hash = ((hash << 5) - hash) + raw.charCodeAt(i);
+    hash |= 0;
+  }
+  return 'fp_' + Math.abs(hash).toString(36);
+}
+
+// ===== LẤY IP =====
+async function getIP() {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json');
+    const data = await res.json();
+    return data.ip;
+  } catch {
+    return 'unknown';
+  }
+}
+
+// ===== KIỂM TRA LICENSE =====
+async function checkLicense() {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+
+  if (!token) {
+    showBlockScreen(
+      'Không có quyền truy cập',
+      'Bạn cần link có token hợp lệ để sử dụng ứng dụng này.'
+    );
+    return;
+  }
+
+  showLoading();
+
+  const fingerprint = await getFingerprint();
+  const ip = await getIP();
+
+  try {
+    const url = `${API_URL}?action=verify&token=${encodeURIComponent(token)}&fingerprint=${encodeURIComponent(fingerprint)}&ip=${encodeURIComponent(ip)}`;
+    const res = await fetch(url);
+    const result = await res.json();
+
+    if (result.success) {
+      hideLoading();
+      if (result.status === 'trial') {
+        showTrialBanner(result.days_left, token);
+      }
+      // Mở nội dung app
+      const appContent = document.getElementById('app-content');
+      if (appContent) appContent.style.display = 'block';
+    } else {
+      hideLoading();
+      if (result.reason === 'expired') {
+        showActivationModal(token);
+      } else {
+        showBlockScreen(
+          'Truy cập bị từ chối',
+          result.message || 'Token không hợp lệ hoặc đã bị khóa.'
+        );
+      }
+    }
+  } catch (err) {
+    hideLoading();
+    showBlockScreen('Lỗi kết nối', 'Không thể xác thực. Vui lòng thử lại sau.');
+  }
+}
+
+// ===== BANNER TRIAL =====
+function showTrialBanner(daysLeft, token) {
+  const banner = document.createElement('div');
+  banner.id = 'trial-banner';
+  banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:linear-gradient(90deg,#ff6b6b,#ffd93d);color:#000;text-align:center;padding:10px 16px;font-weight:600;z-index:99999;font-size:14px;font-family:sans-serif;';
+  banner.innerHTML = '\u23F1\uFE0F B\u1EA3n d\u00F9ng th\u1EED: c\u00F2n <strong>' + daysLeft + '</strong> ng\u00E0y | <a href="#" id="open-activate-link" style="color:#000;text-decoration:underline;font-weight:700;">Nh\u1EADp m\u00E3 k\u00EDch ho\u1EA1t</a>';
+  document.body.prepend(banner);
+  document.body.style.paddingTop = '44px';
+
+  document.getElementById('open-activate-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    showActivationModal(token);
+  });
+}
+
+// ===== MODAL KÍCH HOẠT =====
+function showActivationModal(token) {
+  const old = document.getElementById('activate-modal');
+  if (old) old.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'activate-modal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:sans-serif;';
+  modal.innerHTML = ''
+    + '<div style="background:#12121a;border:1px solid #2a2a3a;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;">'
+    +   '<div style="font-size:3rem;">\uD83D\uDD12</div>'
+    +   '<h2 style="color:#e8e8f0;margin:16px 0 8px;font-size:1.4rem;">H\u1EBFt h\u1EA1n d\u00F9ng th\u1EED</h2>'
+    +   '<p style="color:#8888a0;font-size:14px;margin-bottom:24px;">Nh\u1EADp m\u00E3 k\u00EDch ho\u1EA1t \u0111\u1EC3 ti\u1EBFp t\u1EE5c s\u1EED d\u1EE5ng</p>'
+    +   '<input id="license-input" type="text" placeholder="VD: LIC-ABC123" style="width:100%;padding:14px;border-radius:10px;border:1px solid #2a2a3a;background:#1a1a28;color:#e8e8f0;font-size:16px;text-align:center;outline:none;box-sizing:border-box;" />'
+    +   '<button id="activate-btn" style="width:100%;padding:14px;margin-top:12px;border-radius:10px;border:none;background:linear-gradient(135deg,#00d4aa,#00b4d8);color:#000;font-weight:700;font-size:15px;cursor:pointer;">K\u00EDch ho\u1EA1t ngay</button>'
+    +   '<button id="close-modal-btn" style="width:100%;padding:10px;margin-top:8px;border-radius:10px;border:1px solid #2a2a3a;background:transparent;color:#8888a0;font-size:13px;cursor:pointer;">\u0110\u00F3ng</button>'
+    +   '<p style="color:#8888a0;font-size:12px;margin-top:16px;">Li\u00EAn h\u1EC7: ' + ADMIN_CONTACT + ' \u0111\u1EC3 mua m\u00E3</p>'
+    + '</div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('activate-btn').addEventListener('click', function() {
+    submitLicense(token);
+  });
+  document.getElementById('close-modal-btn').addEventListener('click', function() {
+    modal.remove();
+  });
+  document.getElementById('license-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') submitLicense(token);
+  });
+}
+
+// ===== GỬI MÃ KÍCH HOẠT =====
+async function submitLicense(token) {
+  const input = document.getElementById('license-input');
+  const key = input ? input.value.trim() : '';
+  if (!key) {
+    alert('Vui l\u00F2ng nh\u1EADp m\u00E3 k\u00EDch ho\u1EA1t.');
+    return;
+  }
+
+  const btn = document.getElementById('activate-btn');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = '\u0110ang x\u00E1c th\u1EF1c...';
+  }
+
+  try {
+    const url = `${API_URL}?action=activate&token=${encodeURIComponent(token)}&license_key=${encodeURIComponent(key)}`;
+    const res = await fetch(url);
+    const result = await res.json();
+
+    if (result.success) {
+      alert('\u2705 K\u00EDch ho\u1EA1t th\u00E0nh c\u00F4ng! Trang s\u1EBD t\u1EA3i l\u1EA1i.');
+      location.reload();
+    } else {
+      alert('\u274C ' + (result.message || 'M\u00E3 k\u00EDch ho\u1EA1t kh\u00F4ng \u0111\u00FAng.'));
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'K\u00EDch ho\u1EA1t ngay';
+      }
+    }
+  } catch (err) {
+    alert('L\u1ED7i k\u1EBFt n\u1ED1i. Vui l\u00F2ng th\u1EED l\u1EA1i.');
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'K\u00EDch ho\u1EA1t ngay';
+    }
+  }
+}
+
+// ===== MÀN HÌNH CHẶN =====
+function showBlockScreen(title, msg) {
+  document.body.innerHTML = ''
+    + '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0f;color:#e8e8f0;font-family:sans-serif;text-align:center;padding:20px;">'
+    +   '<div>'
+    +     '<div style="font-size:4rem;">\uD83D\uDEAB</div>'
+    +     '<h1 style="margin:16px 0;font-size:1.6rem;">' + title + '</h1>'
+    +     '<p style="color:#8888a0;font-size:15px;max-width:400px;">' + msg + '</p>'
+    +     '<p style="color:#8888a0;font-size:12px;margin-top:24px;">Li\u00EAn h\u1EC7: ' + ADMIN_CONTACT + '</p>'
+    +   '</div>'
+    + '</div>';
+}
+
+// ===== LOADING =====
+function showLoading() {
+  const el = document.createElement('div');
+  el.id = 'license-loading';
+  el.style.cssText = 'position:fixed;inset:0;background:#0a0a0f;display:flex;align-items:center;justify-content:center;z-index:999999;font-family:sans-serif;';
+  el.innerHTML = '<div style="text-align:center;color:#e8e8f0;"><div style="font-size:3rem;">\uD83E\uDDE0</div><p style="margin-top:16px;font-size:15px;">\u0110ang x\u00E1c th\u1EF1c quy\u1EC1n truy c\u1EADp...</p></div>';
+  document.body.prepend(el);
+}
+
+function hideLoading() {
+  const el = document.getElementById('license-loading');
+  if (el) el.remove();
+}
+
+// ===== KHỞI CHẠY =====
+window.addEventListener('DOMContentLoaded', checkLicense);
+</script>
+</body>
+</html>
